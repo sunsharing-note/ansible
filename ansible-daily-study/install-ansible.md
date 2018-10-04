@@ -1,3 +1,4 @@
+##### ansible安装
 yum install epel-release -y
 yum install git python python-pip -y
 pip install pip --upgrade -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.al        
