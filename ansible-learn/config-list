@@ -1,0 +1,51 @@
+# 关于/etc/ansible/hosts的配置，有很多中写法，最好用yaml
+#[hosts]
+#192.168.29.250
+#192.168.29.252
+#[A]
+#192.168.29.250
+#[B]
+#192.168.29.252
+#[C:children]
+#A
+#B
+
+#all:
+# hosts:
+#  192.168.29.250:
+# children:
+#  test1:
+#   hosts:
+#    192.168.29.252:
+#  test2:
+#   hosts:
+#    192.168.29.250:
+all:
+ children:
+  pro:
+   children:
+    pro1:
+     hosts:
+      192.168.29.250:
+    pro2:
+     hosts:
+      192.168.29.252:
+
+# 下面这种方式也是可以的
+
+[mftp-web-api]
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+
+[mftp-redis-rabbitmq]
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+
+[mftp-mysql]
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+
+[mftp-nginx]
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx
+ip ansible_ssh_user=app ansible_ssh_pass=xxxxxxxx ansible_sudo_pass=xxxxxxxx

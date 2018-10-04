@@ -1,0 +1,28 @@
+#! /bin/bash
+#安装ansible
+
+# 一种
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install ansible
+
+#
+#  二种pwd
+/etc/yum.repos.d
+ 
+# cat aliBase.repo
+[aliBase]
+name=aliBase
+baseurl=https://mirrors.aliyun.com/centos/$releasever/os/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/centos/$releasever/os/$basearch/RPM-GPG-KEY-CentOS-$releasever
+ 
+# cat aliEpel.repo
+[aliEpel]
+name=aliEpel
+baseurl=https://mirrors.aliyun.com/epel/$releasever\Server/$basearch/
+enabled=1
+gpgcheck=0
+
+
+yum install ansible
