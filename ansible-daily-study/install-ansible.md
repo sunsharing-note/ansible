@@ -1,6 +1,5 @@
 ##### ansible安装
 
-```
 * yum install epel-release -y    安装epel源
 * yum install git python python-pip -y  安装依赖
 * #pip install pip --upgrade
@@ -12,7 +11,6 @@
 * ssh-copy-id  root@192.168.40.200
 * ssh-copy-id  root@192.168.40.201
 * ssh-copy-id  root@192.168.40.202
-```
 **注**：这种方式安装需要自己在/etc目录下创建ansible文件夹，再在其目录下创建编辑hosts文件。
 ```
 [root@ansible-k8s1 etc]# ansible all -m ping
