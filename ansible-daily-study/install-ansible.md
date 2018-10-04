@@ -13,6 +13,7 @@
 * ssh-copy-id  root@192.168.40.202
 
 **注**：这种方式安装需要自己在/etc目录下创建ansible文件夹，再在其目录下创建编辑hosts文件。
+
 ```
 [root@ansible-k8s1 etc]# ansible all -m ping
 192.168.40.202 | SUCCESS => {
