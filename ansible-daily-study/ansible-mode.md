@@ -3,7 +3,7 @@
 * copy 复制文件
 * file 对文件或目录的操作
 * blockinfile 在指定文本中插入一段“文本”
-* lineinfile 确保某一行文本存在于指定文本中
+* lineinfile 适用于编辑文件，插入、删除、修改
 * find 查找指定文件
 * replace 替换文件
 * command 在远程主机上执行命令 不支持> . |类似的操作符 不会经过远程主机shell处理
