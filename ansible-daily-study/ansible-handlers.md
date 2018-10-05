@@ -18,3 +18,64 @@ handlers是另外一种任务列表，与tasks是平级的，只是满足一定�
       name: nginx
       state: restarted
 ```
+
+**说明**: 一般情况下，所有tasks执行完了才会去执行handlers；如果需要使用- meta: flush_handlers，这样的话，在meta之前的任务执行完成之后就会去执行handlers
+
+```
+---
+- hosts: test70
+  remote_user: root
+  tasks:
+  - name: task1
+    file: path=/testdir/testfile
+          state=touch
+    notify: handler1
+  - name: task2
+    file: path=/testdir/testfile2
+          state=touch
+    notify: handler2
+ 
+  - meta: flush_handlers
+ 
+  - name: task3
+    file: path=/testdir/testfile3
+          state=touch
+    notify: handler3
+ 
+  handlers:
+  - name: handler1
+    file: path=/testdir/ht1
+          state=touch
+  - name: handler2
+    file: path=/testdir/ht2
+          state=touch
+  - name: handler3
+    file: path=/testdir/ht3
+          state=touch
+ ```
+ 
+listen
+
+```
+---
+- hosts: test70
+  remote_user: root
+  tasks:
+  - name: task1
+    file: path=/testdir/testfile
+          state=touch
+    notify: handler group1
+ 
+  handlers:
+  - name: handler1
+    listen: handler group1
+    file: path=/testdir/ht1
+          state=touch
+  - name: handler2
+    listen: handler group1
+    file: path=/testdir/ht2
+          state=touch
+```
+
+
+
