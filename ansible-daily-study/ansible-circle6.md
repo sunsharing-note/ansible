@@ -1,4 +1,4 @@
-with_subelements with_dict
+with_subelements with_dict (with_file with_fileglob针对文件)
 
 ```
 [root@ansible-k8s1 data]# ansible-playbook --syntax-check circle-test.yaml
