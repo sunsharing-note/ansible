@@ -46,3 +46,45 @@ PLAY RECAP *********************************************************************
 test1                      : ok=4    changed=2    unreachable=0    failed=0
 
 ```
+
+另外，有时候因需要，可以将所有的变量放在一个文件中，再利用vars_files进行引用，当然也可以引用多个变量文件，如
+
+```
+[root@ansible-k8s1 data]# cat nginx_vars.yaml
+nginx:
+  conf80: /data/nginx/80.conf
+  conf8080: /data/nginx/8080.conf
+[root@ansible-k8s1 data]# ansible-playbook --syntax-check nginx-test.yaml
+
+playbook: nginx-test.yaml
+[root@ansible-k8s1 data]# cat nginx-test.yaml
+---
+- hosts: test1
+  remote_user: root
+  vars_files:
+  - /data/nginx_vars.yaml
+  tasks:
+  - name: task1
+    file:
+      path={{ nginx.conf80 }}
+      state=touch
+  - name: task2
+    file:
+      path={{ nginx.conf8080 }}
+      state=touch
+[root@ansible-k8s1 data]# ansible-playbook nginx-test.yaml
+
+PLAY [test1] *********************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+ok: [test1]
+
+TASK [task1] *********************************************************************************************************************************
+changed: [test1]
+
+TASK [task2] *********************************************************************************************************************************
+changed: [test1]
+
+PLAY RECAP ***********************************************************************************************************************************
+test1                      : ok=3    changed=2    unreachable=0    failed=0
+```
