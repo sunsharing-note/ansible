@@ -1,5 +1,5 @@
 ansible判断： exists defined undefined none success successded failure failed  changed change skip skipped file directory link mount exists
-lower upper event odd divisibelby(num) version subset superset string  number与when配合使用
+lower upper event odd divisibelby(num) version subset superset string  number与when配合使用，fail模块，failed_when changed_when
 
 另外，通常使用when关键字只能去执行一个任务，但是如果需要执行多个任务，这时需要block，将多个任务组成一个块。
 
